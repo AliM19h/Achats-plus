@@ -1,0 +1,121 @@
+  <!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Cliquez & Achetez-les</title>
+</head>
+<body>
+
+    <!-- Section Hero -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <h1>Bienvenue sur Cliquez & Achetez-les</h1>
+            <p>La boutique en ligne de référence pour vos vêtements, chaussures et accessoires tendance.</p>
+            <a href="#produits" class="btn">Découvrir nos produits</a>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section id="a-propos" class="a-propos">
+        <div class="container">
+            <h2>Qui sommes-nous ?</h2>
+            <p>“Cliquez & Achetez-les” est une boutique 100% en ligne basée en Côte d'Ivoire, spécialisée dans la vente de vêtements, chaussures et accessoires à des prix imbattables. Notre mission : rendre la mode accessible à tous, en quelques clics.</p>
+        </div>
+    </section>
+
+    <!-- Section Produits -->
+    <section id="produits" class="produits">
+        <div class="container">
+            <h2>Nos Produits</h2>
+            <div class="produits-grid">
+                <article class="carte-produit">
+                    <img src="images/"maillot alt="barca.jpg">
+                    <h3>barca.jpg</h3>
+                    <p class="prix">12 000 FCFA</p>
+                    <button>Ajouter au panier</button>
+                </article>
+
+                <article class="carte-produit">
+                    <img src="images/chaussures.jpg" alt="chaussures basket.jpg">
+                    <h3>chaussures basket.jpg</h3>
+                    <p class="prix">8 000 FCFA</p>
+                    <button>Ajouter au panier</button>
+                </article>
+
+                <article class="carte-produit">
+                    <img src="images/iphone7.jpg" alt="iphone7.jpg">
+                    <h3>iphone7.jpg</h3>
+                    <p class="prix">80 000 FCFA</p>
+                    <button>Ajouter au panier</button>
+                </article>
+                <!-- Ajoute autant de produits que tu veux -->
+            </div>
+        </div>
+    </section>
+
+ <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">Cliquez & Achetez-les</div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#a-propos">À propos</a></li>
+                    <li><a href="#produits">Produits</a></li>
+                    <li><a href="#temoignages">Témoignages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    
+    <!-- Section Témoignages -->
+    <section id="temoignages" class="temoignages">
+        <div class="container">
+            <h2>Ce que disent nos clients</h2>
+            <blockquote>
+                <p>"Livraison rapide et produits de qualité. J'adore cette boutique !"</p>
+                <footer>— Aïcha K.</footer>
+            </blockquote>
+            <blockquote>
+                <p>"Service client très réactif. Je recommande à 100%."</p>
+                <footer>— Yao M.</footer>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Section Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Restez informé(e)</h2>
+            <p>Inscrivez-vous à notre newsletter pour recevoir les offres exclusives et nouveautés.</p>
+            <form>
+                <input type="email" placeholder="Votre adresse e-mail" required>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Section Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Nous contacter</h2>
+            <form>
+                <input type="text" name="nom" placeholder="Votre nom" required>
+                <input type="email" name="email" placeholder="Votre e-mail" required>
+                <textarea name="message" placeholder="Votre message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cliquez & Achetez-les. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

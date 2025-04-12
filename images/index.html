@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cliquez & Achetez-les - E-commerce</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="img/logo.jpeg" alt="Logo">
+        <h1>Cliquez & Achetez-les</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#produits">Produits</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#panier" onclick="openPanier()">Panier <span id="panier-count">0</span> articles</a></li>
+          <li><a href="#compte">Mon Compte</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Accueil Section -->
+  <section id="accueil" class="hero">
+    <div class="container">
+      <h1>Bienvenue sur Cliquez & Achetez-les</h1>
+      <a href="#produits" class="btn">Découvrez nos produits</a>
+    </div>
+  </section>
+
+  <!-- Section des Produits -->
+  <section id="produits" class="produits">
+    <div class="container">
+      <h2>Nos Produits</h2>
+      
+      <!-- Filtre par Catégorie -->
+      <div class="filters">
+        <label for="category">Catégorie :</label>
+        <select id="category">
+          <option value="all">Tous</option>
+          <option value="homme">Vêtements Homme</option>
+          <option value="femme">Vêtements Femme</option>
+          <option value="chaussures">Chaussures</option>
+          <option value="sacs">Sacs à main</option>
+          <option value="accessoires">Accessoires</option>
+        </select>
+      </div>
+
+      <!-- Grille des Produits -->
+      <div class="produits-grid">
+        <!-- Exemple de produits -->
+        <div class="carte-produit" data-category="homme">
+          <img src="img/nike-tshirt.jpg" alt="T-shirt Nike">
+          <h3>T-shirt Nike Homme</h3>
+          <p class="prix">7 000 FCFA</p>
+          <button onclick="addToCart('T-shirt Nike Homme', 7000)">Ajouter au panier</button>
+        </div>
+
+        <div class="carte-produit" data-category="homme">
+          <img src="img/adidas-tshirt.jpg" alt="T-shirt Adidas">
+          <h3>T-shirt Adidas Homme</h3>
+          <p class="prix">6 500 FCFA</p>
+          <button onclick="addToCart('T-shirt Adidas Homme', 6500)">Ajouter au panier</button>
+        </div>
+
+        <div class="carte-produit" data-category="femme">
+          <img src="img/lv-tshirt.jpg" alt="T-shirt LV">
+          <h3>T-shirt Louis Vuitton Femme</h3>
+          <p class="prix">9 000 FCFA</p>
+          <button onclick="addToCart('T-shirt Louis Vuitton Femme', 9000)">Ajouter au panier</button>
+        </div>
+
+        <div class="carte-produit" data-category="chaussures">
+          <img src="img/chaussure-talons.jpg" alt="Talons Femme">
+          <h3>Chaussures à talons</h3>
+          <p class="prix">12 000 FCFA</p>
+          <button onclick="addToCart('Chaussures à talons', 12000)">Ajouter au panier</button>
+        </div>
+        
+        <!-- Ajouter d'autres produits ici -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contactez-nous</h2>
+      <form>
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Cliquez & Achetez-les - Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Modal Panier -->
+  <div id="panier-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closePanier()">&times;</span>
+      <h2>Votre Panier</h2>
+      <div id="panier-items"></div>
+      <p><strong>Total : </strong><span id="total-price">0 FCFA</span></p>
+      <button onclick="checkout()">Payer avec Wave</button>
+      https://pay.wave.com/m/M_ci_aQ5_2xCDvYl7/c/ci/?amount=${total}=FCFA
+    </div>
+  </div>
+
+  <script>
+    let panier = [];
+    const panierCount = document.getElementById('panier-count');
+    const panierItems = document.getElementById('panier-items');
+    const totalPriceElement = document.getElementById('total-price');
+
+    function addToCart(productName, price) {
+      panier.push({ name: productName, price: price });
+      panierCount.innerText = panier.length;
+      updatePanier();
+    }
+
+    function updatePanier() {
+      panierItems.innerHTML = '';
+      let total = 0;
+      panier.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.innerHTML = ${item.name} - ${item.price} FCFA;
+        panierItems.appendChild(itemDiv);
+        total += item.price;
+      });
+      totalPriceElement.innerText = total + ' FCFA';
+    }
+
+    function openPanier() {
+      document.getElementById('panier-modal').style.display = 'block';
+    }
+
+    function closePanier() {
+      document.getElementById('panier-modal').style.display = 'none';
+    }
+
+    function checkout() {
+      const total = panier.reduce((sum, item) => sum + item.price, 0);
+      if (total === 0) {
+        alert("Votre panier est vide. Ajoutez des produits pour procéder au paiement.");
+        return;
+      }
+      const paymentUrl =https://pay.wave.com/m/M_ci_aQ5_2xCDvYl7/c/ci/?amount=${total}&currency=FCFA ;
+      window.location.href = paymentUrl;
+    }
+
+    document.getElementById('category').addEventListener('change', (event) => {
+      const selectedCategory = event.target.value;
+      const produits = document.querySelectorAll('.carte-produit');
+      produits.forEach(produit => {
+        if (selectedCategory === 'all' || produit.getAttribute('data-category') === selectedCategory) {
+          produit.style.display = 'block';
+        } else {
+          produit.style.display = 'none';
+        }
+      });
+    });
+
+    function searchProducts() {
+      const searchTerm = document.getElementById('search').value.toLowerCase();
+      const produits = document.querySelectorAll('.carte-produit');
+      produits.forEach(produit => {
+        const name = produit.querySelector('h3').textContent.toLowerCase();
+        produit.style.display = name.includes(searchTerm) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
